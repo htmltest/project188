@@ -17,15 +17,17 @@ iframe {border:none; max-width:100%}
 
 strong, b {font-weight:500}
 
-h1 {margin:100px 0 20px 0; padding:0; font-weight:bold; font-size:50px; line-height:61px; letter-spacing:-0.02em; color:#005678}
-.fonts-loaded h1 {font-family:Montserrat, sans-serif}
+h1,
+.h1 {margin:100px 0 20px 0; padding:0; font-weight:bold; font-size:50px; line-height:61px; letter-spacing:-0.02em; color:#005678}
+.fonts-loaded h1,
+.fonts-loaded .h1 {font-family:Montserrat, sans-serif}
 h2 {margin:40px 0 20px 0; padding:0; font-weight:500; font-size:40px; line-height:49px; color:#005678}
 .fonts-loaded h2 {font-family:Montserrat, sans-serif}
 h3 {margin:40px 0 20px 0; padding:0; font-weight:500; font-size:32px; line-height:42px; color:#005678}
 .fonts-loaded h3 {font-family:Montserrat, sans-serif}
 h4 {margin:40px 0 20px 0; padding:0; font-weight:500; font-size:24px; line-height:31px; color:#005678}
 .fonts-loaded h4 {font-family:Montserrat, sans-serif}
-p {margin:20px 0; padding:0}
+p {margin:10px 0; padding:0}
 ul {margin:20px 0 40px 0; padding:0; list-style:none}
 h1+ul,
 h2+ul
@@ -93,6 +95,11 @@ form.loading::after {content:""; display:block; position:absolute; left:0; top:0
 .form-input input.valid,
 .form-input textarea.valid {border-color:#40cb4e}
 label.error {display:block; margin:10px 0 0 0; font-weight:normal; font-size:14px; line-height:21px; text-transform:uppercase; letter-spacing:0.05em; text-align:right; color:#ea1e1e}
+
+.form-input input:-webkit-autofill,
+.form-input input:-webkit-autofill:active,
+.form-input input:-webkit-autofill:focus,
+.form-input input:-webkit-autofill:hover {-webkit-text-fill-color:#000; caret-color:#000; -webkit-transition:background-color 999999s ease-in-out 0s; transition:background-color 999999s ease-in-out 0s}
 
 .form-checkbox {margin:20px 0; color:#171717; font-size:16px; line-height:21px}
 .form-checkbox::after {content:""; display:block; clear:both}
@@ -191,9 +198,10 @@ label.error {display:block; margin:10px 0 0 0; font-weight:normal; font-size:14p
 .container {max-width:1340px; margin:0 auto; padding:0 20px}
 .container::after {content:""; display:block; clear:both}
 
-.wrapper {width:100%; min-width:480px; position:relative; overflow:hidden}
+.wrapper {width:100%; min-width:480px; position:relative; overflow:hidden; padding:80px 0 0 0}
 
-header {height:80px; position:relative}
+header {height:80px; position:fixed; left:0; top:0; right:0; background:#fff; z-index:99}
+header.fixed {box-shadow:0px 0 18px rgba(0, 0, 0, 0.11)}
 
 .nav {position:absolute; left:0; top:22px; right:0; text-align:center}
 .nav ul {display:inline-block; vertical-align:top; margin:0; padding:0; list-style:none; text-align:left}
@@ -213,8 +221,28 @@ header {height:80px; position:relative}
 .header-callback {float:right; margin:29px 30px 0 0; position:relative}
 .header-callback svg {display:block; width:22px; height:22px; fill:none; stroke:#005678}
 
-.header-search {float:right; margin:29px 30px 0 0; position:relative}
-.header-search svg {display:block; width:22px; height:22px; fill:none; stroke:#005678}
+.header-search {float:right; margin:29px 30px 0 0}
+.header-search-link {position:relative}
+.header-search-link svg {display:block; width:22px; height:22px; fill:none; stroke:#005678}
+
+.header-search-window {display:none; position:absolute; right:0; top:0; left:calc(50vw - 488px); padding:0 173px 0 158px; height:80px; background:#fff; z-index:2}
+.header-search-open .header-search-window {display:block}
+.header-search-window form {margin:0; padding:20px 32px 0 0; border-bottom:1px solid #ff5406; position:relative}
+.header-search-input input {position:relative; border:none; font:18px/27px Arial, sans-serif; color:#000; vertical-align:top; margin:0; padding:8px 0; width:100%; height:43px; box-sizing:border-box; outline:none; border-radius:0; background:#fff; -webkit-appearance:none; transition:border-color 0.2s}
+.header-search-input input {font-family:RobotoCondensed, sans-serif}
+.header-search-input input::-webkit-input-placeholder {opacity:1; color:#acacac}
+.header-search-input input::-moz-placeholder {opacity:1; color:#acacac}
+.header-search-input input:-ms-input-placeholder {opacity:1; color:#acacac}
+.header-search-input input:-webkit-autofill,
+.header-search-input input:-webkit-autofill:active,
+.header-search-input input:-webkit-autofill:focus,
+.header-search-input input:-webkit-autofill:hover {-webkit-text-fill-color:#000; caret-color:#000; -webkit-transition:background-color 999999s ease-in-out 0s; transition:background-color 999999s ease-in-out 0s}
+.header-search-submit {position:absolute; right:0; bottom:12px}
+.header-search-submit button {display:block; vertical-align:top; margin:0; padding:0; overflow:visible; outline:none; text-decoration:none; background:transparent; border:none; border-radius:0; position:relative; -webkit-appearance:none; cursor:pointer; box-sizing:border-box}
+.header-search-submit button svg {display:block; width:22px; height:22px; fill:none; stroke:#ff5406}
+.header-search-close {display:block; position:absolute; right:0; top:0; width:70px; height:80px}
+.header-search-close svg {display:block; width:15px; height:14px; fill:#000; position:absolute; left:50%; top:50%; margin:-7px 0 0 -7px; transition:fill 0.2s}
+.header-search-close:hover svg {fill:#ff5406}
 
 .breadcrumbs {padding:20px 0 0 0; font-size:16px; line-height:19px; color:rgba(0, 86, 120, 0.5)}
 .breadcrumbs a {color:rgba(0, 86, 120, 0.5); text-decoration:none}
@@ -376,6 +404,55 @@ header {height:80px; position:relative}
 .main-news .slick-dots li button {display:block; position:relative; width:10px; height:10px; border-radius:50%; border:none; background:#005678; margin:0; padding:0; outline:none; -webkit-appearance:none; cursor:pointer; font-size:0; line-height:0; text-indent:100px; opacity:0.2; transition:opacity 0.2s}
 .main-news .slick-dots li button:hover,
 .main-news .slick-dots li.slick-active button {opacity:1}
+
+.about-header {margin:7px 0 0 0; padding:0 0 46px 0}
+.about-header::after {content:""; display:block; clear:both}
+.about-header h1 {float:left; clear:left; width:calc(100% - 358px); margin:89px 0 0 0; color:#fff}
+.about-header-digits {float:right; clear:right; width:338px; color:#fff}
+.about-header-digit {border-top:1px solid #ddd; margin:20px 0 0 0; padding:20px 0 0 0}
+.about-header-digit:first-child {border-top:none; margin:0; padding:0}
+.about-header-digit-value {font-weight:500; font-size:36px; line-height:42px}
+.fonts-loaded .about-header-digit-value {font-family:Montserrat, sans-serif}
+.about-header-digit-text {margin:10px 0 0 0; line-height:24px}
+.about-header-btn {float:left; clear:left; margin:20px 0 0 0}
+.about-header-btn .btn {padding-left:29px; padding-right:29px}
+
+.benefits {margin:100px -999px -100px -999px; position:relative; background:#fafafa; padding:51px 999px 54px 999px}
+.benefits h2 {margin:0}
+.benefits-list {margin:40px -20px 0 -20px}
+.benefits-list-inner {display:table; width:100%; border-collapse:separate; border-spacing:20px 0}
+.benefits-item {display:table-cell; vertical-align:top; width:25%; border:1px solid #d9d9d9; padding:20px 20px 35px 20px; position:relative}
+.benefits-item::before {content:""; display:block; position:absolute; left:-1px; bottom:0; right:-1px; height:2px; background:#ff5406}
+.benefits-item-icon {height:90px; line-height:0}
+.benefits-item-title {font-size:22px; line-height:26px; color:#000}
+.benefits-item-text {margin:20px 0 0 0; color:#424242}
+
+.products-header {margin:-16px -11px 32px -11px; font-size:0; line-height:0; letter-spacing:-1px}
+.products-header-item {display:inline-block; vertical-align:top; width:25%; padding:0 11px 40px 11px; color:#fff}
+.products-header-item::before {content:""; display:block; width:30px; height:5px; background:#ff5406}
+.products-header-item-title {margin:29px 0 0 0; font-size:22px; line-height:26px; letter-spacing:0}
+.products-header-item-text {margin:17px 0 0 0; font-size:18px; line-height:25px; letter-spacing:0}
+
+.products-categories {margin:100px 0 0 0}
+.products-category {margin:100px 0 0 0}
+.products-category-header {padding:0 0 0 97px; position:relative}
+.products-category-header-icon {display:block; width:77px; height:77px; position:absolute; left:0; top:3px; border:2px solid #00a6ce; border-radius:15px; text-align:center; line-height:73px}
+.products-category-header-icon img {display:inline-block; vertical-align:middle}
+.products-category-header h2 {margin:0}
+.products-category-header-text {margin:10px 0 0 0}
+
+.products-category-list {margin:23px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
+.products-category-item {display:inline-block; vertical-align:top; width:33.33%; padding:20px 10px 0 10px}
+.products-category-item a {display:table; width:100%; border:1px solid #d9d9d9; color:#000; transition:color 0.2s, background 0.2s}
+.products-category-item a:hover {background:#ff5406; color:#fff}
+.products-category-item-photo {display:table-cell; vertical-align:middle; width:130px; height:120px; text-align:center}
+.products-category-item-photo img {max-width:90px; max-height:100px}
+.products-category-item-title {display:table-cell; vertical-align:middle; font-size:22px; line-height:26px; letter-spacing:0; position:relative; padding:0 57px 0 0}
+.products-category-item-title svg {position:absolute; right:20px; bottom:20px; display:block; width:17px; height:17px; fill:#ff5406}
+.products-category-list-text {margin:28px 0 0 0}
+.products-category-list-text::after {content:""; display:block; clear:both}
+.products-category-list-text ul {float:left; margin:0 0 -10px 0; padding:0; list-style:none; column-count:3; column-gap:70px}
+.products-category-list-text ul li {margin:0; padding:0 0 10px 20px; -webkit-column-break-inside:avoid; page-break-inside:avoid; break-inside:avoid; break-inside:avoid-column}
 
 footer {margin:100px 0 0 0}
 
