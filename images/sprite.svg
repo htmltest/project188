@@ -144,4 +144,9 @@
         <path d="M3.36477 39.8952H39.6836V41.866H3.36477V39.8952Z" />
     </symbol>
 
+    <symbol viewBox="0 0 34 34" id="documentation-title">
+        <circle cx="17" cy="17" r="16.5" transform="rotate(90 17 17)" fill="white" stroke="#EBEBEB" />
+        <path d="M12 14.5L17 19.5L22 14.5" stroke="#005678" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+
 </svg>
