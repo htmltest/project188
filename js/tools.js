@@ -310,11 +310,11 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('body').on('click', '.window-photo-social-item-telegram', function(e) {
+    $('body').on('click', '.window-photo-social-item-tw', function(e) {
         var curTitle = encodeURIComponent($('title').html());
         var curUrl = encodeURIComponent(window.location.href);
 
-        popupCenter('https://t.me/share/url?url=' + curUrl + '&text=' + curTitle, curTitle);
+        popupCenter('https://twitter.com/share?url=' + curUrl + '&text=' + curTitle, curTitle);
 
         e.preventDefault();
     });
@@ -354,16 +354,17 @@ $(document).ready(function() {
         windowHTML +=               '<div class="window-photo-social-window">';
         windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-link"></use></svg></a>';
         windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-fb"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-fb"></use></svg></a>';
-        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-telegram"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-telegram"></use></svg></a>';
+        windowHTML +=                   '<a href="#" class="window-photo-social-item window-photo-social-item-tw"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#window-photo-share-tw"></use></svg></a>';
         windowHTML +=               '</div>';
         windowHTML +=           '</div>';
 
-        if (curGallery.find('.case-gallery-item').length > 1) {
+        var galleryLength = curGallery.find('.case-gallery-item').length;
+
+        if (galleryLength > 1) {
             windowHTML +=       '<div class="window-photo-preview">' +
                                     '<div class="window-photo-preview-inner">' +
                                         '<div class="window-photo-preview-list">';
 
-            var galleryLength = curGallery.find('.case-gallery-item').length;
             for (var i = 0; i < galleryLength; i++) {
                 var curTitle = '';
                 var curGalleryItem = curGallery.find('.case-gallery-item').eq(i);
@@ -380,7 +381,12 @@ $(document).ready(function() {
         for (var i = 0; i < galleryLength; i++) {
             var curGalleryItem = curGallery.find('.case-gallery-item').eq(i);
             windowHTML +=               '<div class="window-photo-slider-list-item">' +
-                                            '<div class="window-photo-slider-list-item-inner"><img src="' + pathTemplate + 'images/loading.gif" data-src="' + curGalleryItem.find('a').attr('href') + '" alt="" /><div class="window-photo-slider-list-item-title">' + curGalleryItem.find('a').attr('title') + '</div></div>' +
+                                            '<div class="window-photo-slider-list-item-inner">' +
+                                                '<div class="window-photo-slider-list-item-content">' +
+                                                    '<img src="' + pathTemplate + 'images/loading.gif" data-src="' + curGalleryItem.find('a').attr('href') + '" alt="" />' +
+                                                    '<div class="window-photo-slider-list-item-title">' + curGalleryItem.find('a').attr('title') + '</div>' +
+                                                '</div>' +
+                                            '</div>' +
                                         '</div>';
         }
         windowHTML +=               '</div>' +
@@ -484,6 +490,24 @@ $(document).ready(function() {
             if ($('.window-photo').length > 0) {
                 $('.window-photo-close').trigger('click');
             }
+        }
+    });
+
+    $('#materials-filter').change(function() {
+        var curValue = $(this).val();
+        if (curValue == '') {
+            $('.materials-block.hidden').removeClass('hidden');
+        } else {
+            $('.materials-block').addClass('hidden');
+            $('.materials-block[id="' + curValue + '"]').removeClass('hidden');
+        }
+    });
+
+    $('#materials-filter').each(function() {
+        if (window.location.hash != '') {
+            var curID = window.location.hash.replace('#', '');
+            $('#materials-filter option[value="' + curID + '"]').prop('selected', true);
+            $('#materials-filter').trigger('change');
         }
     });
 
@@ -919,6 +943,30 @@ $(window).on('load resize', function() {
             var curTop = curBlock.offset().top;
 
             curList.find('.cases-item a').each(function() {
+                var otherBlock = $(this);
+                if (otherBlock.offset().top == curTop) {
+                    var newHeight = otherBlock.outerHeight();
+                    if (newHeight > curHeight) {
+                        curBlock.css({'min-height': newHeight + 'px'});
+                    } else {
+                        otherBlock.css({'min-height': curHeight + 'px'});
+                    }
+                }
+            });
+        });
+    });
+
+    $('.press-news-list').each(function() {
+        var curList = $(this);
+
+        curList.find('.press-news-item-title').css({'min-height': '0px'});
+
+        curList.find('.press-news-item-title').each(function() {
+            var curBlock = $(this);
+            var curHeight = curBlock.outerHeight();
+            var curTop = curBlock.offset().top;
+
+            curList.find('.press-news-item-title').each(function() {
                 var otherBlock = $(this);
                 if (otherBlock.offset().top == curTop) {
                     var newHeight = otherBlock.outerHeight();

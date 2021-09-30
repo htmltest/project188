@@ -320,7 +320,7 @@ header.hidden {display:none}
 .header-search-close svg {display:block; width:15px; height:14px; fill:#000; position:absolute; left:50%; top:50%; margin:-7px 0 0 -7px; transition:fill 0.2s}
 .header-search-close:hover svg {fill:#ff5406}
 
-.breadcrumbs {padding:20px 0 0 0; font-size:16px; line-height:19px; color:rgba(0, 86, 120, 0.5)}
+.breadcrumbs {padding:20px 0 0 0; font-size:16px; line-height:19px; color:rgba(0, 86, 120, 0.5); white-space:nowrap; position:relative; overflow:hidden; text-overflow:ellipsis}
 .breadcrumbs a {color:rgba(0, 86, 120, 0.5); text-decoration:none}
 .breadcrumbs a:hover {color:rgba(0, 86, 120, 1)}
 .breadcrumbs span {color:#005678}
@@ -815,11 +815,87 @@ hr+.solutions-detail-block {margin:80px 0 0 0}
 .case-gallery-big img {display:block; width:100%}
 .case-gallery-list {display:none}
 
+.press-news {margin:-20px 0 0 0}
+.press-news-big a {display:table; border-collapse:collapse; border:1px solid #d9d9d9; transition:background 0.2s, color 0.2s; color:#000}
+.press-news-big a:hover {color:#fff; background:#ff5406}
+.press-news-big-preview {display:table-cell; vertical-align:top; width:50%; line-height:0}
+.press-news-big-preview img {display:block; width:100%}
+.press-news-big-container {display:table-cell; vertical-align:top; width:50%; padding:56px 60px; position:relative}
+.press-news-big-date {text-transform:uppercase; font-size:16px; line-height:24px; color:#808080; transition:color 0.2s}
+.press-news-big a:hover .press-news-big-date {color:#fff}
+.press-news-big-title {margin:37px 0 0 0; font-size:22px; line-height:31px}
+.press-news-big-anonce {margin:20px 0 0 0; color:#808080; transition:color 0.2s}
+.press-news-big a:hover .press-news-big-anonce {color:#fff}
+.press-news-big-arrow {position:absolute; right:30px; bottom:30px; display:block; width:17px; height:17px; fill:#ff5406; transition:fill 0.2s}
+.press-news-big a:hover .press-news-big-arrow {fill:#fff}
+
+.press-news-list {margin:0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
+.press-news-item {display:inline-block; vertical-align:top; width:33.33%; padding:20px 10px 0 10px}
+.press-news-item a {display:block; border:1px solid #d9d9d9; transition:background 0.2s, color 0.2s; color:#000; position:relative}
+.press-news-item a::before {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:5px; background:#ff5406}
+.press-news-item a:hover {color:#fff; background:#ff5406}
+.press-news-item-preview {height:300px; position:relative; overflow:hidden}
+.press-news-item-preview img {display:block; width:100%}
+.press-news-item-container {padding:30px 30px 24px 30px; position:relative}
+.press-news-item-title {font-size:22px; line-height:31px; letter-spacing:0}
+.press-news-item-date {text-transform:uppercase; font-size:16px; line-height:24px; color:#808080; transition:color 0.2s; margin:30px 0 0 0; letter-spacing:0}
+.press-news-item a:hover .press-news-item-date {color:#fff}
+.press-news-item-arrow {position:absolute; right:30px; bottom:30px; display:block; width:17px; height:17px; fill:#ff5406; transition:fill 0.2s}
+.press-news-item a:hover .press-news-item-arrow {fill:#fff}
+
+.press-marketing {margin:-40px -10px 0 -10px; font-size:0; line-height:0; letter-spacing:-1px}
+.press-marketing-item {display:inline-block; vertical-align:top; width:33.33%; padding:20px 10px 0 10px}
+.press-marketing-item a {display:block; height:295px; color:#000; transition:color 0.2s, background 0.2s; border:1px solid #d9d9d9; position:relative}
+.press-marketing-item a::before {content:""; display:block; position:absolute; left:0; bottom:0; right:0; height:5px; background:#ff5406}
+.press-marketing-item a:hover {color:#fff; background:#ff5406}
+.press-marketing-item-icon {position:absolute; left:30px; top:30px}
+.press-marketing-item-icon svg {display:block; fill:#ff5406; transition:fill 0.2s}
+.press-marketing-item a:hover .press-marketing-item-icon svg {fill:#fff}
+.press-marketing-item-title {position:absolute; left:30px; top:124px; right:30px; font-size:32px; line-height:38px; letter-spacing:0}
+.press-marketing-item-arrow {position:absolute; right:30px; bottom:30px; display:block; width:17px; height:17px; fill:#ff5406; transition:fill 0.2s}
+.press-marketing-item a:hover .press-marketing-item-arrow {fill:#fff}
+
+.press-btn-all {margin:40px -10px 0 -10px}
+.press-btn-all-inner {width:33.33%; padding:0 10px}
+.press-btn-all-inner a {display:block; width:100%; padding-left:0; padding-right:0}
+.press-btn-all-inner a svg {width:27px; height:16px; margin:-2px 0 0 10px}
+
+.press-news-page {margin:40px 0 0 0}
+
+.news-detail-date {margin:40px 0 0 0; color:#808080; text-transform:uppercase}
+.news-detail-date::before {content:""; display:block; width:30px; height:5px; margin:0 0 20px 0; background:#ff5406}
+
+.news-detail {margin:80px 0 0 0}
+
+.more-news {margin:100px 0 0 0}
+
+.back-link {margin:80px -10px 0 -10px}
+.back-link-inner {width:33.33%; padding:0 10px}
+.back-link-inner .btn-border {width:100%; color:#ff5406}
+.back-link-inner .btn-border:hover {color:#fff}
+.back-link-inner svg {width:27px; height:16px; margin:-2px 10px 0 0}
+
+.materials {margin:0 0 80px 0}
+.materials-block {border-bottom:1px solid #c4c4c4; padding:80px 0 80px 96px}
+.materials-block.hidden {display:none}
+.materials-block-title {position:relative}
+.materials-block-icon {display:block; position:absolute; left:-96px; top:-14px; width:77px; height:77px; border:2px solid #00a5cf; border-radius:15px; text-align:center; line-height:75px}
+.materials-block-icon img {display:inline-block; vertical-align:middle}
+.materials-block-title h2 {margin:0}
+.materials-block-list {margin:44px 0 0 0}
+.materials-block-list .file-link {margin:28px 0 0 0}
+.materials-block-list .file-link a {padding:0 0 0 48px; color:#848484}
+.materials-block-list .file-link-icon {top:1px; width:37px}
+.materials-block-list .file-link-icon img {width:37px}
+.materials-block-list .file-link-title {color:#005677}
+.materials-block-list .file-link a:hover .file-link-title {color:#ff5406}
+.materials-block-list .file-link-info {margin:7px 0 0 0}
+
 footer {margin:100px 0 0 0}
 
 .footer-pre {background:#f6f6f6; padding:20px 0; font-size:16px; line-height:19px}
 
-.footer-breadcrumbs {float:left; color:rgba(0, 86, 120, 0.5)}
+.footer-breadcrumbs {float:left; color:rgba(0, 86, 120, 0.5); white-space:nowrap; position:relative; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 105px)}
 .footer-breadcrumbs a {color:rgba(0, 86, 120, 0.5); text-decoration:none}
 .footer-breadcrumbs a:hover {color:rgba(0, 86, 120, 1)}
 .footer-breadcrumbs span {color:#005678}
@@ -898,16 +974,16 @@ footer {margin:100px 0 0 0}
 .window-photo-preview .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {background:#fff; border-radius:3px}
 .window-photo-preview .mCSB_scrollTools .mCSB_draggerRail {background:rgba(0, 86, 120, 0.5); width:3px; border-radius:3px}
 
-.window-photo-close {display:block; position:absolute; right:30px; top:30px}
+.window-photo-close {display:block; position:absolute; right:30px; top:27px}
 .window-photo-close svg {display:block; fill:#fff; transition:all 0.2s; width:14px; height:15px}
-.window-photo-close:hover svg {stroke:#ff5406}
+.window-photo-close:hover svg {fill:#ff5406}
 
 .window-photo-download {display:block; position:absolute; right:121px; top:26px}
-.window-photo-download svg {display:block; fill:none; stroke:#fff; transition:all 0.2s; width:15px; height:15px}
-.window-photo-download:hover svg {stroke:#ff5406}
+.window-photo-download svg {display:block; fill:#fff; transition:all 0.2s; width:15px; height:15px}
+.window-photo-download:hover svg {fill:#ff5406}
 
 .window-photo-social {display:block; position:absolute; right:155px; top:26px}
-.window-photo-social-icon svg {display:block; fill:none; stroke:#fff; transition:all 0.2s; width:13px; height:15px}
+.window-photo-social-icon svg {display:block; fill:#fff; transition:all 0.2s; width:13px; height:15px}
 .window-photo-social-window {display:none; position:absolute; z-index:99; left:50%; top:100%; margin:14px 0 0 -72px; padding:9px 0 0 17px; width:144px; height:47px; background:#424242; box-shadow:6px 6px 20px rgba(36, 36, 36, 0.13)}
 .window-photo-social-window::before {content:""; display:block; position:absolute; left:50%; top:-7px; width:14px; height:14px; background:#424242; margin-left:-7px; transform:rotate(45deg)}
 .window-photo-social-window::after {content:""; display:block; position:absolute; left:-1px; top:-15px; right:-1px; height:16px; background:url(../images/blank.gif)}
@@ -919,18 +995,20 @@ footer {margin:100px 0 0 0}
 .window-photo-social-item.window-photo-social-item-link:hover {background:#ff5406}
 .window-photo-social-item.window-photo-social-item-link svg {stroke:#000; fill:none}
 .window-photo-social-item.window-photo-social-item-fb svg {fill:#fff}
-.window-photo-social-item.window-photo-social-item-telegram svg {fill:#fff}
+.window-photo-social-item.window-photo-social-item-tw svg {fill:#fff}
 .window-photo-social-item.window-photo-social-item-link:hover svg {stroke:#fff}
 .window-photo-social-item.window-photo-social-item-fb:hover svg {fill:#ff5406}
-.window-photo-social-item.window-photo-social-item-telegram:hover svg {fill:#ff5406}
+.window-photo-social-item.window-photo-social-item-tw:hover svg {fill:#ff5406}
 
 .window-photo-slider {position:absolute; left:119px; top:65px; right:119px; bottom:65px; font-size:0; line-height:0; letter-spacing:-1px; white-space:nowrap}
 .window-photo-preview+.window-photo-slider {left:242px}
 .window-photo-slider-list {position:relative; overflow:hidden}
+.window-photo-slider-list.slick-initialized {overflow:visible}
 .window-photo-slider-list-item {display:inline-block; vertical-align:top; width:100%}
 .window-photo-slider-list-item-inner {display:block; width:100%; height:calc(100vh - 222px); line-height:calc(100vh - 222px); text-align:center}
 .window-photo-slider .slick-slide img,
 .window-photo-slider-list-item-inner img {display:inline-block; vertical-align:middle; max-height:100%}
+.window-photo-slider-list-item-content {display:inline-block; vertical-align:middle; line-height:0; text-align:left}
 .window-photo-slider-list-item-title {margin:10px 0 0 0; font-size:16px; line-height:22px; letter-spacing:0; color:#808080}
 
 .window-photo-slider .slick-prev,
