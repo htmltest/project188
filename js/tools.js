@@ -511,6 +511,15 @@ $(document).ready(function() {
         }
     });
 
+    $('body').on('change', '#window-form-select-primary', function() {
+        var curValue = $(this).val();
+        if (curValue == 'other') {
+            $('#window-form-select-other').prop('disabled', false);
+        } else {
+            $('#window-form-select-other').prop('disabled', true);
+        }
+    });
+
 });
 
 function initForm(curForm) {
@@ -693,9 +702,6 @@ function initForm(curForm) {
                         curForm.prepend('<div class="message message-success">' + data.message + '</div>')
                     } else {
                         curForm.prepend('<div class="message message-error">' + data.message + '</div>')
-                    }
-                    if ($(window).width() < 1200) {
-                        $('html, body').animate({'scrollTop': $('#feedback').offset().top - $('header').height()});
                     }
                     curForm.removeClass('loading');
                 });
@@ -1015,3 +1021,27 @@ $(window).on('load resize scroll', function() {
         }
     }
 });
+
+var captchaKey = '6Ldk5DMUAAAAALWRTOM96EQI_0OApr59RQHoMirA';
+var captchaArray = [];
+
+var onloadCallback = function() {
+    $('.g-recaptcha').each(function() {
+        var newCaptcha = grecaptcha.render(this, {
+            'sitekey' : captchaKey,
+            'callback' : verifyCallback,
+        });
+        captchaArray.push([newCaptcha, $(this)]);
+    });
+};
+
+var verifyCallback = function(response) {
+    for (var i = 0; i < captchaArray.length; i++) {
+        if (grecaptcha.getResponse(captchaArray[i][0])) {
+            var curInput = captchaArray[i][1].next();
+            curInput.val(response);
+            curInput.removeClass('error');
+            curInput.parent().find('label.error').remove();
+        }
+    }
+};

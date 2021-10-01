@@ -1,0 +1,29 @@
+<div class="window-form">
+    <div class="window-title">
+        <h3>Product request</h3>
+    </div>
+    <div class="window-form-container">
+        <form action="#" method="post" class="ajax-form">
+            <div class="window-content">
+                <div class="form-input"><span>Name</span><input type="text" name="name" value="" class="required" /></div>
+                <div class="form-input"><span>Company name</span><input type="text" name="company" value="" class="required" /></div>
+                <div class="form-input"><span>Email address</span><input type="text" name="email" value="" class="required email" /></div>
+                <div class="form-input"><span>Your inquiry here</span><textarea name="message" class="required" rows="5" cols="10"></textarea></div>
+                <div class="window-form-ctrl">
+                    <div class="window-form-policy">
+                        <div class="form-checkbox"><label><input type="checkbox" name="policy" checked="checked" class="required" /><span>Check to agree to the<br /> terms of the <a href="#" target="_blank">Privacy Policy</span></label></div>
+                    </div>
+                    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+                    <div class="window-form-captcha">
+                        <div class="g-recaptcha"></div>
+                        <input type="hidden" class="required" name="hiddenRecaptcha" value="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="window-bottom">
+                <div class="window-form-submit"><button type="submit" class="btn">send <svg width="28" height="15"><use xlink:href="images/sprite.svg#btn-send"></use></svg></button></div>
+            </div>
+        </form>
+    </div>
+</div>
