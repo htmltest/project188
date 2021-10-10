@@ -786,7 +786,7 @@ hr+.solutions-detail-block {margin:80px 0 0 0}
 .cases-item a:hover .cases-item-place span::before {background:#fff}
 .cases-item-section {position:relative; padding:0 0 0 32px; margin:14px 20px 57px 20px; color:#808080; transition:color 0.2s; font-size:16px; line-height:24px; letter-spacing:0; text-transform:uppercase}
 .cases-item a:hover .cases-item-section {color:#fff}
-.cases-item-section svg {display:block; fill:#00a5cf; position:absolute; left:0; top:12px; transform:translateY(-50%); transition:fill 0.2s}
+.cases-item-section svg {display:block; width:26px; height:26px; fill:#00a5cf; position:absolute; left:0; top:12px; transform:translateY(-50%); transition:fill 0.2s}
 .cases-item a:hover .cases-item-section svg {fill:#fff}
 .cases-item-arrow {position:absolute; right:20px; bottom:20px}
 .cases-item-arrow svg {display:inline-block; width:17px; height:17px; fill:#ff5406; transition:fill 0.2s}
