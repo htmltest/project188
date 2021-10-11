@@ -16,7 +16,7 @@
 .select2-container .select2-search--inline .select2-search__field:-ms-input-placeholder {opacity:1; color:#999}
 .select2-container .select2-search--inline .select2-search__field::-webkit-search-cancel-button {-webkit-appearance:none}
 
-.select2-dropdown {background-color:#fff; border:2px solid #e5e5e5; box-shadow:8px 8px 40px rgba(0, 0, 0, 0.08); border-radius:0; box-sizing:border-box; display:block; max-width:400px; position:absolute; left:-100000px; width:100%; z-index:1051}
+.select2-dropdown {background-color:#fff; border:2px solid #e5e5e5; box-shadow:8px 8px 40px rgba(0, 0, 0, 0.08); border-radius:0; box-sizing:border-box; display:block; max-width:400px; position:absolute; left:-100000px; width:100%; z-index:51}
 @media screen and (max-width:1339px) {
     .select2-dropdown {max-width:none}
 }
@@ -95,7 +95,7 @@
 
 .select2-container--default .select2-search--inline .select2-search__field {background:transparent; border:none; outline:0; box-shadow:none; -webkit-appearance:textfield}
 
-.select2-container--default .select2-results > .select2-results__options {max-height:200px; overflow-y:auto}
+.select2-container--default .select2-results > .select2-results__options {max-height:450px; overflow-y:auto}
 
 .select2-container--default .select2-results__option[aria-disabled=true] {color:#999}
 .select2-container--default .select2-results__option[aria-selected=true] {color:#333; background-color:#f2f8ff}

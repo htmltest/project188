@@ -175,7 +175,13 @@ $(document).ready(function() {
         slidesToScroll: 2,
         prevArrow: '<button type="button" class="slick-prev"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-prev"></use></svg></button>',
         nextArrow: '<button type="button" class="slick-next"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-next"></use></svg></button>',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1199,
+                settings: 'unslick'
+            }
+        ]
     });
 
     $('.main-solutions').each(function() {
@@ -187,10 +193,20 @@ $(document).ready(function() {
                             curTab.find('.main-solutions-tab-icon').html() +
                             curTab.find('h3').text() +
                         '</a>';
+            curTab.prepend('<div class="main-solutions-tab-title">' +
+                                '<div class="main-solutions-tab-title-inner">' +
+                                    '<div class="main-solutions-tab-title-text">' + curTab.find('.main-solutions-tab-icon').html() + curTab.find('h3').text() + '</div>' +
+                                    '<div class="main-solutions-tab-title-arrow"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#mobile-open-icon"></use></svg></div>' +
+                                '</div>' +
+                           '</div>');
         });
         $('.main-solutions-menu-inner').html(curMenu);
         curBlock.find('.main-solutions-menu-item').eq(0).addClass('active');
         curBlock.find('.main-solutions-tab').eq(0).addClass('active');
+    });
+
+    $('.main-solutions-tab-title').click(function() {
+        $(this).parents().filter('.main-solutions-tab').toggleClass('open');
     });
 
     $('body').on('click', '.main-solutions-menu-item', function(e) {
@@ -211,7 +227,18 @@ $(document).ready(function() {
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-prev"></use></svg></button>',
         nextArrow: '<button type="button" class="slick-next"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-next"></use></svg></button>',
-        dots: true
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    adaptiveHeight: true
+                }
+            }
+        ]
     });
 
     $('.main-news').slick({
@@ -220,7 +247,18 @@ $(document).ready(function() {
         slidesToScroll: 3,
         prevArrow: '<button type="button" class="slick-prev"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-prev"></use></svg></button>',
         nextArrow: '<button type="button" class="slick-next"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#slider-next"></use></svg></button>',
-        dots: true
+        dots: true,
+        responsive: [
+            {
+                breakpoint: 1199,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    adaptiveHeight: true
+                }
+            }
+        ]
     });
 
     $('.tabs').each(function() {
@@ -264,7 +302,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '.table-row-link', function(e) {
-        window.location = $(this).attr('data-href');
+        window.open($(this).attr('data-href'), '_blank');
     });
 
     $('.wrapper .container table').each(function() {
@@ -518,6 +556,46 @@ $(document).ready(function() {
         } else {
             $('#window-form-select-other').prop('disabled', true);
         }
+    });
+
+    $('.mobile-menu-link').click(function(e) {
+        if ($('html').hasClass('mobile-menu-open')) {
+            $('html').removeClass('mobile-menu-open');
+            $('.wrapper').css('margin-top', 0);
+            $(window).scrollTop($('html').data('scrollTop'));
+        } else {
+            var curScroll = $(window).scrollTop();
+            $('html').addClass('mobile-menu-open');
+            $('html').data('scrollTop', curScroll);
+            $('.wrapper').css('margin-top', -curScroll);
+        }
+        e.preventDefault();
+    });
+
+    $('.footer-menu ul li').each(function() {
+        var curLi = $(this);
+        if (curLi.find('ul').length > 0) {
+            curLi.append('<div class="footer-menu-sub-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#footer-menu-arrow"></use></svg></div>');
+        }
+    });
+
+    $('.footer-menu-sub-link').click(function() {
+        $(this).parent().toggleClass('open');
+    });
+
+    $('.main-products-content-title').click(function() {
+        $(this).parents().filter('.main-products-content').toggleClass('open');
+    });
+
+    $('.nav ul li').each(function() {
+        var curLi = $(this);
+        if (curLi.find('.nav-submenu').length > 0) {
+            curLi.append('<div class="nav-sub-link"><svg><use xlink:href="' + pathTemplate + 'images/sprite.svg#mobile-open-icon"></use></svg></div>');
+        }
+    });
+
+    $('.nav-sub-link').click(function() {
+        $(this).parent().toggleClass('open');
     });
 
 });
@@ -795,11 +873,11 @@ $(window).on('load resize', function() {
         curList.find('.category-item-preview').each(function() {
             var curBlock = $(this);
             var curHeight = curBlock.outerHeight();
-            var curTop = curBlock.offset().top;
+            var curTop = curBlock.parents().filter('.category-item').offset().top;
 
             curList.find('.category-item-preview').each(function() {
                 var otherBlock = $(this);
-                if (otherBlock.offset().top == curTop) {
+                if (otherBlock.parents().filter('.category-item').offset().top == curTop) {
                     var newHeight = otherBlock.outerHeight();
                     if (newHeight > curHeight) {
                         curBlock.css({'min-height': newHeight + 'px'});
@@ -815,11 +893,11 @@ $(window).on('load resize', function() {
         curList.find('.category-item-text').each(function() {
             var curBlock = $(this);
             var curHeight = curBlock.outerHeight();
-            var curTop = curBlock.offset().top;
+            var curTop = curBlock.parents().filter('.category-item').offset().top;
 
             curList.find('.category-item-text').each(function() {
                 var otherBlock = $(this);
-                if (otherBlock.offset().top == curTop) {
+                if (otherBlock.parents().filter('.category-item').offset().top == curTop) {
                     var newHeight = otherBlock.outerHeight();
                     if (newHeight > curHeight) {
                         curBlock.css({'min-height': newHeight + 'px'});
