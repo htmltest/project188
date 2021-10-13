@@ -496,6 +496,11 @@ header.hidden {display:none}
 
 @media screen and (max-width:1199px) {
     .header-search {display:none}
+    .mobile-menu-open .header-search {display:block; margin:0}
+    .header-search-link {width:72px; height:80px; padding:29px 0 0 16px}
+    .header-search-link::after {content:""; display:block; width:41px; height:40px; background:url(../images/header-search-mobile.svg) no-repeat}
+    .header-search-link svg {display:none}
+    .header-search-open .header-search-link {display:none}
 }
 
 .header-search-window {display:none; position:absolute; right:0; top:0; left:calc(50vw - 488px); padding:0 173px 0 158px; height:80px; background:#fff; z-index:2}
@@ -511,12 +516,31 @@ header.hidden {display:none}
 .header-search-input input:-webkit-autofill:focus,
 .header-search-input input:-webkit-autofill:hover {-webkit-text-fill-color:#000; caret-color:#000; -webkit-transition:background-color 999999s ease-in-out 0s; transition:background-color 999999s ease-in-out 0s}
 .header-search-submit {position:absolute; right:0; bottom:12px}
-.header-search-submit button {display:block; vertical-align:top; margin:0; padding:0; overflow:visible; outline:none; text-decoration:none; background:transparent; border:none; border-radius:0; position:relative; -webkit-appearance:none; cursor:pointer; box-sizing:border-box}
+.header-search-submit button {display:block; vertical-align:top; margin:0; padding:0; overflow:visible; outline:none; text-decoration:none; background:transparent; border:none; border-radius:0; position:relative; -webkit-appearance:none; cursor:pointer; box-sizing:border-box; font-size:0; line-height:0}
 .header-search-submit button svg {display:block; width:22px; height:22px; fill:none; stroke:#ff5406}
 .header-search-close {display:block; position:absolute; right:0; top:0; width:70px; height:80px}
 .header-search-close svg {display:block; width:15px; height:14px; fill:#000; position:absolute; left:50%; top:50%; margin:-7px 0 0 -7px; transition:fill 0.2s}
 @media screen and (min-width:1200px) {
     .header-search-close:hover svg {fill:#ff5406}
+}
+
+@media screen and (max-width:1199px) {
+    .header-search-window {left:20px; top:100px; right:20px; padding:0; border-top:1px solid #e4e4e4; height:auto; bottom:0}
+    .header-search-open .nav {display:none}
+    .header-search-open .mobile-menu-link {display:none}
+    .header-search-window form {padding:0; border-bottom:none; position:static}
+    .header-search-input {position:relative}
+    .header-search-input::after {content:""; display:block; width:41px; height:40px; position:absolute; right:0; top:29px; background:url(../images/header-search-mobile.svg) no-repeat; pointer-events:none}
+    .header-search-input input {font-size:20px; line-height:24px; padding:44px 60px 20px 0; border-bottom:1px solid #04729e; height:89px}
+    .header-search-input input::-webkit-input-placeholder {color:#000}
+    .header-search-input input::-moz-placeholder {color:#000}
+    .header-search-input input:-ms-input-placeholder {color:#000}
+    .header-search-submit {position:relative; right:auto; bottom:auto; margin:30px 0 0 0}
+    .header-search-submit button {width:100%; height:48px; text-align:center; font-size:18px; font-weight:500; line-height:48px; letter-spacing:0.04em; text-transform:uppercase; color:#fff; background:#04729e}
+    .header-search-submit button svg {display:none}
+    .header-search-close {width:80px; height:100px; top:-100px; right:-20px}
+    .header-search-close::before {content:""; display:block; width:32px; height:31px; position:absolute; left:50%; top:50%; margin:-17px 0 0 -16px; background:url(../images/header-search-mobile-close.svg) no-repeat}
+    .header-search-close svg {display:none}
 }
 
 .back-mobile-link {display:none}
