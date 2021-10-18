@@ -621,6 +621,10 @@ $(document).ready(function() {
         });
     });
 
+    $('.press-news-big-preview').each(function() {
+        $(this).css({'background-image' : 'url(' + $(this).find('img').attr('src') + ')'});
+    });
+
 });
 
 function initForm(curForm) {
