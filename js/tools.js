@@ -756,6 +756,10 @@ function initForm(curForm) {
             options['allowClear'] = true;
         }
 
+        if (curSelect.parents().filter('.window').length == 1) {
+            options['dropdownParent'] = $('.window-content');
+        }
+
         curSelect.select2(options);
 
         curSelect.parent().find('.select2-container').attr('data-placeholder', curSelect.attr('data-placeholder'));
